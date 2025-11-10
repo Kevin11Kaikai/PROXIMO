@@ -18,7 +18,7 @@ It can:
 |-------|----------------|-----------|
 | **A. Perception Layer** | Risk Evaluation Agent | Detects emotional and linguistic signals of distress (e.g., suicidal ideation, self-blame, negative affect). |
 | **B. Reasoning & Control Layer** | Controller / Risk Router | Maps risk score \(S \in [0,1]\) → Low / Medium / High, adjusts chatbot’s freedom accordingly. |
-| **C. Conversation Layer** | Coping / Peer Support / Crisis Intervention Agents | Low risk → free empathetic chat;<br>Medium risk → semi-structured peer-support guidance;<br>High risk → structured safety prompts + C-SSRS / GAD-7 screening. |
+| **C. Conversation Layer** | Coping / Peer Support / Crisis Intervention Agents ｜ C-SSRS / GAD-7 screening. | Low risk → free empathetic chat;<br>Medium risk → semi-structured peer-support guidance;<br>High risk → structured safety prompts |
 | **D. Safety & Ethics Layer** | Guardrails + Ethical Filter | Nemo Guardrails / LlamaGuard ensure compliance, prevent unsafe responses. |
 | **E. Adaptive Layer** | Memory & Feedback Agent | Evaluates outcomes and adapts to user needs. |
 
