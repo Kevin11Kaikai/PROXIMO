@@ -8,8 +8,11 @@
 # 激活 Conda 环境
 conda activate PROXIMO
 
-# 安装依赖
+# 安装依赖（如果遇到 pytest-asyncio 错误，先运行此命令更新依赖）
 uv sync
+
+# 如果 uv sync 后仍有问题，手动更新 pytest-asyncio
+pip install --upgrade pytest-asyncio>=0.24.0
 ```
 
 ### 2. 检查服务
@@ -110,6 +113,18 @@ test_integration/        # 集成测试
 - **GitHub 准备**: `GITHUB_PREPARATION.md`
 
 ## 常见问题
+
+### Q: 运行测试时遇到 `ModuleNotFoundError: No module named 'backports'` 错误？
+
+A: 这是因为 `pytest-asyncio` 版本过旧。解决方法：
+
+```bash
+# 更新 pytest-asyncio 到最新版本
+pip install --upgrade pytest-asyncio>=0.24.0
+
+# 或者重新同步所有依赖
+uv sync
+```
 
 ### Q: 如何添加新的 Agent？
 
