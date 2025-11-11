@@ -1,6 +1,7 @@
-# 🤖 AI Personality Drift Simulation
+# 🧠 PROXIMO — Controllable and Ethically Aligned Mental Health Chatbot
 
->> **What happens when AI personalities change? Now we can actually study it.**
+> **PROXIMO = Safe, Controllable, and Warm AI for Adolescent Mental Health.**  
+> It's not just a chatbot — it's a measurable, ethical AI ecosystem for emotional well-being.
 
 **Advanced AI Safety Research Platform for Studying Personality Drift with Mechanistic Interpretability**
 
