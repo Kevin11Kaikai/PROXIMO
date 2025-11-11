@@ -277,7 +277,8 @@ async def export_data(request: DataExportRequest) -> Dict[str, Any]:
                         if assessment_dir.exists():
                             for file_path in assessment_dir.glob("*.json"):
                                 try:
-                                    with open(file_path, 'r') as f:
+                                    # Explicitly use UTF-8 encoding to avoid Windows GBK encoding issues
+                                    with open(file_path, 'r', encoding='utf-8') as f:
                                         assessment_data = json.load(f)
                                     
                                     # Convert assessment data to export format
@@ -302,7 +303,8 @@ async def export_data(request: DataExportRequest) -> Dict[str, Any]:
             if mechanistic_path.exists():
                 for file_path in mechanistic_path.glob("*.json"):
                     try:
-                        with open(file_path, 'r') as f:
+                        # Explicitly use UTF-8 encoding to avoid Windows GBK encoding issues
+                        with open(file_path, 'r', encoding='utf-8') as f:
                             mechanistic_data = json.load(f)
                         
                         # Convert to export format
@@ -324,7 +326,8 @@ async def export_data(request: DataExportRequest) -> Dict[str, Any]:
             if events_path.exists():
                 for file_path in events_path.glob("*.json"):
                     try:
-                        with open(file_path, 'r') as f:
+                        # Explicitly use UTF-8 encoding to avoid Windows GBK encoding issues
+                        with open(file_path, 'r', encoding='utf-8') as f:
                             events_data = json.load(f)
                         
                         # Convert to export format

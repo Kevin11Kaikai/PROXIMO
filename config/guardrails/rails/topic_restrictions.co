@@ -1,0 +1,46 @@
+# 话题限制：禁止提供医疗建议、诊断或危险信息
+
+define user ask medical advice
+  "what medication should I take"
+  "should I see a doctor"
+  "what's wrong with me"
+  "do I have depression"
+  "am I bipolar"
+  "diagnose me"
+
+define user ask dangerous information
+  "how to self harm"
+  "how to cut myself"
+  "ways to hurt myself"
+  "how to overdose"
+
+define flow medical advice restriction
+  user ask medical advice
+  bot explain cannot provide medical advice
+  stop
+
+define flow dangerous information restriction
+  user ask dangerous information
+  bot explain cannot provide dangerous information
+  stop
+
+define bot explain cannot provide medical advice
+  "I'm not able to provide medical advice, diagnosis, or treatment recommendations. 
+
+For medical concerns, it's important to speak with a qualified healthcare provider who can:
+• Conduct a proper evaluation
+• Consider your full medical history
+• Provide appropriate treatment recommendations
+
+If you're looking for mental health support, I can help you find resources in your area or discuss general wellness strategies. Would that be helpful?"
+
+define bot explain cannot provide dangerous information
+  "I can't and won't provide information about self-harm or dangerous behaviors.
+
+If you're struggling with thoughts of self-harm, please reach out for help:
+• Call or text 988 (US National Suicide & Crisis Lifeline) - available 24/7
+• Contact your local emergency services
+• Reach out to a trusted adult, friend, or healthcare provider
+
+Your safety is the most important thing. There are people who want to help you."
+

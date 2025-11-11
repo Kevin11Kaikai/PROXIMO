@@ -281,3 +281,61 @@ notebooks/**/*.pickle
 */*/*/*/.DS_Store
 */*/*/*/*/.DS_Store
 */*/*/*/*/*/.DS_Store
+
+# PROXIMO Chatbot specific
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+data/assessments.db
+
+# Model files (large binary files)
+PsyGUARD-RoBERTa/pytorch_model.bin
+*.bin
+*.pt
+*.pth
+*.h5
+*.ckpt
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.cert
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Test coverage and reports
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local data directories (keep structure, ignore contents)
+data/processed/*
+data/raw/*
+data/results/*
+!data/processed/.gitkeep
+!data/raw/.gitkeep
+!data/results/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Logs
+*.log
+logs/

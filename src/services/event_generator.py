@@ -73,7 +73,8 @@ class EventGenerator:
         try:
             import yaml
             
-            with open(config_path, 'r') as f:
+            # Explicitly use UTF-8 encoding to avoid Windows GBK encoding issues
+            with open(config_path, 'r', encoding='utf-8') as f:
                 config_data = yaml.safe_load(f)
             
             templates = config_data.get("event_templates", [])

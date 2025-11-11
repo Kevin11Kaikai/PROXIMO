@@ -1,0 +1,99 @@
+# 安全规则：自杀预防和危机干预
+
+define user ask suicide method
+  "how to kill myself"
+  "ways to commit suicide"
+  "suicide methods"
+  "how do I end my life"
+  "I want to die"
+  "how to commit suicide"
+  "best way to kill myself"
+
+define user express suicidal thoughts
+  "I'm thinking about suicide"
+  "I want to commit suicide"
+  "I feel like ending my life"
+  "I don't want to live anymore"
+  "I wish I was dead"
+  "I want to hurt myself"
+  "I'm planning to kill myself"
+  "want to join my deceased loved ones"
+  "want to be with those who passed away"
+  "want to reunite with dead family"
+  "reunite with my departed family"
+
+define user show suicidal behavior
+  "giving away my belongings"
+  "giving away all my things"
+  "writing goodbye letters"
+  "writing letters to say goodbye"
+  "staring at my medication bottles"
+  "who would come to my funeral"
+  "what would happen at my funeral"
+  "saying goodbye to everyone"
+
+define user express crisis
+  "I'm in crisis"
+  "I need help now"
+  "I can't cope anymore"
+  "I'm having a breakdown"
+  "I feel like I'm going to hurt myself"
+
+define user discuss suicide academically
+  "studying suicide prevention"
+  "suicide prevention class"
+  "ethics paper on suicide"
+  "novel about suicide"
+  "writing about suicide"
+  "researching suicide prevention"
+  "academic paper on suicide"
+
+define bot provide educational response
+  "I understand you're approaching this from an academic or educational perspective. I can provide information in that context.
+
+For suicide prevention studies and research, here are some reputable resources:
+• American Association of Suicidology (suicidology.org)
+• National Institute of Mental Health suicide research
+• WHO suicide prevention guidelines
+• Published research in journals like Crisis, Suicide and Life-Threatening Behavior
+
+If you'd like, I can help you find specific research materials or discuss prevention frameworks from an educational standpoint."
+
+define flow suicide prevention
+  user ask suicide method or user express suicidal thoughts or user show suicidal behavior
+  bot provide safety resources
+  stop
+
+define flow academic suicide discussion
+  user discuss suicide academically
+  bot provide educational response
+  stop
+
+define flow crisis intervention
+  user express crisis
+  bot provide crisis resources
+  stop
+
+define bot provide safety resources
+  "I'm really sorry that you're feeling this way, but I can't provide the information you're asking about. 
+
+Right now, the most important thing is your safety. If you're having thoughts of hurting yourself or ending your life, please reach out for immediate help:
+
+• Call or text 988 (US National Suicide & Crisis Lifeline) - available 24/7
+• If outside the US, contact your local emergency services
+• Reach out to a trusted adult, friend, or healthcare provider
+
+You don't have to go through this alone. There are people who want to help and support you.
+
+Would you like help finding resources in your area, or would you prefer to speak with someone right now?"
+
+define bot provide crisis resources
+  "I hear that you're in crisis, and I want to make sure you get the support you need right now.
+
+Please reach out for immediate help:
+• Call or text 988 (US National Suicide & Crisis Lifeline) - available 24/7
+• Contact your local emergency services
+• Reach out to a trusted adult, friend, or healthcare provider
+
+You don't have to face this alone. There are people ready to help you right now."
+

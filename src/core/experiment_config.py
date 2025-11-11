@@ -37,7 +37,8 @@ class ExperimentConfig:
                 "drift_detection.yaml", 
                 "personality_drift.yaml",
                 "simulation_timing.yaml",
-                "mechanistic_analysis.yaml"
+                "mechanistic_analysis.yaml",
+                "risk_mapping.yaml"
             ]
             
             for config_file in config_files:
@@ -65,7 +66,8 @@ class ExperimentConfig:
         config_name = filename.replace('.yaml', '')
         
         try:
-            with open(config_path, 'r') as f:
+            # Explicitly use UTF-8 encoding to avoid Windows GBK encoding issues
+            with open(config_path, 'r', encoding='utf-8') as f:
                 config_data = yaml.safe_load(f)
                 self._configs[config_name] = config_data
                 logger.debug(f"Loaded config: {config_name}")

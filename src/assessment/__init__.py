@@ -21,6 +21,15 @@ from .clinical_interpreter import (
     clinical_interpreter
 )
 
+# PROXIMO API - 简洁的评估接口
+from .proximo_api import (
+    assess,
+    assess_sync,
+    assess_phq9,
+    assess_gad7,
+    assess_pss10
+)
+
 __all__ = [
     # Psychiatric scales
     "PsychiatricScaleValidator",
@@ -36,5 +45,12 @@ __all__ = [
     
     # Clinical interpretation
     "ClinicalInterpreter",
-    "clinical_interpreter"
+    "clinical_interpreter",
+    
+    # PROXIMO API - 简洁的评估接口
+    "assess",
+    "assess_sync",
+    "assess_phq9",
+    "assess_gad7",
+    "assess_pss10"
 ] 

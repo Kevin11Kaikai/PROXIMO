@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pathlib import Path
 
-from src.api.routes import monitoring, simulation, data, websocket
+from src.api.routes import monitoring, simulation, data, websocket, assessment
 from src.core.config import settings
 
 
@@ -71,6 +71,7 @@ def create_app() -> FastAPI:
     app.include_router(simulation.router, prefix=settings.API_PREFIX)
     app.include_router(data.router, prefix=settings.API_PREFIX)
     app.include_router(websocket.router, prefix=settings.API_PREFIX)
+    app.include_router(assessment.router, prefix=settings.API_PREFIX)
     
     @app.on_event("startup")
     async def startup_event():

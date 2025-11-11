@@ -122,13 +122,23 @@ Nobody had built the tools to actually study this. So this is an attempt to dive
 - Docker and Docker Compose
 - Python 3.12+
 - 8GB+ RAM (for LLM models)
+- Conda (for environment management)
 
 ### **One-Command Setup**
 ```bash
-# Clone and setup everything (including LLM)
-git clone https://github.com/your-repo/glitch-core.git
-cd glitch-core
-make setup
+# Clone repository
+git clone https://github.com/Kevin11Kaikai/PROXIMO.git
+cd PROXIMO
+
+# Setup environment
+conda env create -f environment.yml
+conda activate PROXIMO
+uv sync
+
+# Download PsyGUARD-RoBERTa model (required for risk detection)
+git lfs install
+git clone https://huggingface.co/qiuhuachuan/PsyGUARD-RoBERTa
+# Or use mirror: git clone https://hf-mirror.com/qiuhuachuan/PsyGUARD-RoBERTa
 ```
 
 ### **Development Environment**
@@ -154,12 +164,21 @@ make test
 
 **[🌐 Interactive Documentation](https://glitch.keeman.co)** - Explore the full documentation with interactive examples and live demos
 
+### **PROXIMO Chatbot (New Architecture)**
+- **[🤖 PROXIMO Chatbot Overview](README_PROXIMO_CHATBOT.md)** - New modular architecture
+- **[🏗️ Architecture Details](ARCHITECTURE.md)** - Detailed system architecture
+- **[🚀 Quick Start Guide](QUICK_START_PROXIMO.md)** - Quick start for PROXIMO Chatbot
+- **[📝 Changelog](CHANGELOG.md)** - Version history and changes
+
 ### **For Developers**
 - **[🚀 Getting Started](docs/developer/getting-started.md)** - Quick setup and development
 - **[🏗️ Architecture](docs/developer/architecture.md)** - System design overview
 - **[📖 API Reference](docs/developer/api-reference.md)** - Complete API docs
 - **[🛠️ Development Guide](docs/developer/development-guide.md)** - Development workflow
 - **[🧪 Testing Guide](docs/developer/testing-guide.md)** - Testing strategies
+- **[📊 Control Layer Analysis](docs/developer/control_layer_rigidity_analysis.md)** - Rigidity control mechanism
+- **[🎯 Risk Score Mapping](docs/developer/risk_score_rigid_score_mapping.md)** - Risk to rigid score mapping
+- **[🌡️ Temperature Control](docs/developer/temperature_math_explanation.md)** - Temperature control mathematics
 
 ### **For Researchers**
 - **[🔬 Research Overview](docs/researcher/research-overview.md)** - Project goals and methodology

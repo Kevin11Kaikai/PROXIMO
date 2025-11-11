@@ -1,0 +1,155 @@
+# Cursor Rules for GLITCH_CORE Project
+# 本项目使用 PROXIMO conda 环境进行开发
+
+## Python 环境配置
+
+### 必须使用 PROXIMO Conda 环境
+- **环境名称**: `PROXIMO`
+- **Python 版本**: 3.10
+- **包管理器**: 优先使用 `uv`，备选 `pip`
+- **激活命令**: `conda activate PROXIMO`
+
+### 运行 Python 代码时的要求
+1. **始终激活 PROXIMO 环境**: 在运行任何 Python 代码、脚本或命令前，必须先激活 conda 环境
+2. **使用正确的 Python 解释器**: 
+   - Windows: `conda activate PROXIMO && python`
+   - 完整路径: `C:\Users\YUS190\AppData\Local\anaconda3\envs\PROXIMO\python.exe`
+   - 或使用 conda run: `conda run -n PROXIMO python <script>`
+3. **包安装**: 使用 `uv sync` 或 `pip install -e .` 安装依赖
+
+### 终端命令示例
+```bash
+# 方式 1: 先激活环境，再运行（推荐）
+conda activate PROXIMO
+python scripts/run_simulation.py
+
+# 方式 2: 一行命令（Windows PowerShell）
+conda activate PROXIMO; python scripts/run_simulation.py
+
+# 方式 3: 使用 conda run（无需激活）
+conda run -n PROXIMO python scripts/run_simulation.py
+
+# 运行测试
+conda activate PROXIMO && pytest
+# 或
+conda run -n PROXIMO pytest
+
+# 安装依赖
+conda activate PROXIMO && uv sync
+# 或
+conda run -n PROXIMO uv sync
+```
+
+## 项目结构
+
+### 主要目录
+- `src/`: 源代码目录
+- `scripts/`: 可执行脚本
+- `tests/`: 测试文件
+- `config/`: 配置文件（YAML）
+- `docs/`: 文档
+
+### 关键文件
+- `pyproject.toml`: 项目依赖定义
+- `environment.yml`: Conda 环境定义
+- `uv.lock`: uv 依赖锁定文件
+
+## 代码风格和规范
+
+### Python 代码
+- 使用 Python 3.12+ 特性
+- 遵循 PEP 8 代码风格
+- 使用类型提示（Type Hints）
+- 使用 `black` 格式化代码
+- 使用 `mypy` 进行类型检查
+
+### 导入规则
+- 使用相对导入: `from src.assessment import ...`
+- 避免循环导入
+- 按标准库、第三方库、本地模块的顺序导入
+
+## 运行脚本时的注意事项
+
+### 1. 环境检查
+在运行任何 Python 脚本前，请确保：
+- PROXIMO conda 环境已激活
+- 所有依赖已安装（运行 `uv sync`）
+- 环境变量已正确设置（`.env` 文件存在）
+
+### 2. 常用命令
+```bash
+# 方式 1: 激活环境后运行（交互式）
+conda activate PROXIMO
+uv sync
+python scripts/run_simulation.py
+python scripts/test_llm.py
+pytest tests/
+black src/
+
+# 方式 2: 使用 conda run（适合 AI 代理，推荐）
+conda run -n PROXIMO uv sync
+conda run -n PROXIMO python scripts/run_simulation.py
+conda run -n PROXIMO python scripts/test_llm.py
+conda run -n PROXIMO pytest tests/
+conda run -n PROXIMO black src/
+```
+
+### 3. Docker 模式 vs 本地模式
+- **Docker 模式**: 使用 `docker-compose up` 或 `make dev`，代码在容器中运行
+- **本地模式**: 需要激活 PROXIMO conda 环境，代码在本地运行
+
+## 错误处理
+
+### 如果遇到 "环境未激活" 错误
+1. 检查 conda 环境是否存在: `conda env list`
+2. 如果不存在，创建环境: `conda env create -f environment.yml`
+3. 激活环境: `conda activate PROXIMO`
+4. 安装依赖: `uv sync`
+
+### 如果遇到 "模块未找到" 错误
+1. 确保 PROXIMO 环境已激活
+2. 运行 `uv sync` 或 `pip install -e .` 安装项目依赖
+3. 检查 Python 路径: `python -c "import sys; print(sys.executable)"`
+
+## 开发工作流
+
+### 推荐工作流
+
+#### 交互式开发（手动）
+1. 打开终端，激活 PROXIMO 环境: `conda activate PROXIMO`
+2. 进入项目目录: `cd D:\PROXIMO\glitch_core`
+3. 运行代码或脚本
+4. 如需安装新依赖，更新 `pyproject.toml` 后运行 `uv sync`
+
+#### AI 代理运行（自动）
+1. 使用 `conda run -n PROXIMO` 前缀运行所有 Python 命令
+2. 示例: `conda run -n PROXIMO python scripts/run_simulation.py`
+3. 无需手动激活环境，conda run 会自动使用正确的环境
+
+### AI 代理运行代码时的要求
+- **必须**: 在运行任何 Python 代码前，先激活 PROXIMO conda 环境
+- **推荐方式 1**: 使用 `conda run -n PROXIMO <command>`（最简单，无需激活）
+- **推荐方式 2**: 使用 `conda activate PROXIMO && <command>`（Windows PowerShell）
+- **推荐方式 3**: 使用完整 Python 路径: `C:\Users\YUS190\AppData\Local\anaconda3\envs\PROXIMO\python.exe <script>`
+- **必须**: 在运行脚本前先检查环境是否正确激活或使用 conda run
+
+## 配置文件
+
+### 环境变量
+- 项目使用 `.env` 文件存储环境变量
+- 从 `env.example` 复制并创建 `.env` 文件
+- 确保 `.env` 文件中的配置正确
+
+### 重要路径
+- 项目根目录: `D:\PROXIMO\glitch_core`
+- Conda 环境: `PROXIMO`
+- 配置文件: `config/` 目录
+- 日志文件: 根据配置（通常在项目根目录）
+
+## 注意事项
+
+1. **始终使用 PROXIMO 环境**: 不要使用系统 Python 或其他环境
+2. **优先使用 uv**: 项目推荐使用 `uv` 管理依赖，比 `pip` 更快
+3. **Windows 兼容性**: 在 Windows 上使用 PowerShell 或 Git Bash，注意路径分隔符
+4. **激活环境**: 每次新开终端都需要重新激活环境
+

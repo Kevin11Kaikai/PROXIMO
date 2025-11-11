@@ -22,7 +22,12 @@ class OllamaService:
     def __init__(self):
         """Initialize Ollama service."""
         self.base_url = settings.OLLAMA_URL
-        self.model_name = settings.MODEL_NAME  # Use environment variable instead of hardcoding
+        # Resolve effective model considering preview alias
+        if getattr(settings, "ENABLE_GPT5_CODEX_PREVIEW", False):
+            backend = getattr(settings, "GPT5_CODEX_BACKEND_MODEL", None) or settings.MODEL_NAME
+            self.model_name = backend
+        else:
+            self.model_name = settings.MODEL_NAME  # Use environment variable instead of hardcoding
         self.is_loaded = False
         self.client = None
         

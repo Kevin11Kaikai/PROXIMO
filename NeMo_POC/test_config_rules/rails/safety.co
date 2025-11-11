@@ -1,0 +1,32 @@
+# 安全规则：自杀预防
+
+define user ask suicide method
+  "how to kill myself"
+  "ways to commit suicide"
+  "suicide methods"
+  "how do I end my life"
+  "I want to die"
+
+define user express suicidal thoughts
+  "I'm thinking about suicide"
+  "I want to commit suicide"
+  "I feel like ending my life"
+  "I don't want to live anymore"
+
+define flow suicide prevention
+  user ask suicide method or user express suicidal thoughts
+  bot provide safety resources
+  stop
+
+define bot provide safety resources
+  "I'm here to support you, and I want to make sure you're safe. 
+
+Right now, the most important thing is your safety. If you're having thoughts of hurting yourself or ending your life, please reach out for immediate help:
+
+• Call or text 988 (US National Suicide & Crisis Lifeline) - available 24/7
+• If outside the US, contact your local emergency services
+• Reach out to a trusted adult, friend, or healthcare provider
+
+You don't have to go through this alone. There are people who want to help and support you.
+
+Would you like help finding resources in your area, or would you prefer to speak with someone right now?"

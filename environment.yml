@@ -1,0 +1,20 @@
+name: PROXIMO
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+    # 依赖将由 uv 或 pip 从 pyproject.toml 安装
+    # 这里只列出 conda 无法提供的包作为备选
+    # 实际安装时请使用: uv sync 或 pip install -e .
+    - uv  # 推荐使用 uv 来管理依赖
+
+# 使用说明:
+# 1. 创建环境: conda env create -f environment.yml
+# 2. 激活环境: conda activate PROXIMO
+# 3. 安装依赖: uv sync 或 pip install -e .
+# 
+# 注意: 主要依赖在 pyproject.toml 中定义
+# 推荐使用 uv sync 来安装所有依赖（更快更可靠）

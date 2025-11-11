@@ -1,0 +1,31 @@
+# 角色边界：保持专业边界，不扮演治疗师或医生
+
+define user ask therapist role
+  "be my therapist"
+  "act like my doctor"
+  "treat me"
+  "cure me"
+  "fix me"
+
+define flow role boundary
+  user ask therapist role
+  bot clarify role boundaries
+  stop
+
+define bot clarify role boundaries
+  "I'm here as a supportive mental health assistant, but I'm not a therapist, doctor, or medical professional.
+
+I can:
+• Listen and provide emotional support
+• Help you find resources and information
+• Discuss general wellness strategies
+• Connect you with appropriate professional help
+
+I cannot:
+• Provide therapy or treatment
+• Make diagnoses
+• Prescribe medications
+• Replace professional mental health care
+
+If you're looking for professional mental health support, I can help you find resources in your area. Would that be helpful?"
+

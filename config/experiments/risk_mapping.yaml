@@ -1,0 +1,28 @@
+# Risk Mapping Configuration
+# Maps assessment severity levels to risk scores and conversation routing
+
+severity_to_risk_score:
+  minimal: 0.15
+  mild: 0.35
+  moderate: 0.60
+  severe: 0.95
+
+# Linear transformation: rigid_score = a * risk_score + b
+rigid_transform:
+  a: 1.0
+  b: 0.0
+
+# Crisis detection rules
+crisis_rules:
+  # If PHQ-9 Item 9 (suicidal ideation) flag is present, trigger hard lock
+  phq9_item9_flag_to_hard_lock: true
+  # Severity levels that trigger hard lock (crisis mode)
+  severity_hard_lock:
+    - severe
+
+# Conversation routing thresholds (based on rigid_score)
+routing_thresholds:
+  low: 0.40      # rigid_score < 0.40 → low route
+  medium: 0.75   # 0.40 <= rigid_score < 0.75 → medium route
+  # rigid_score >= 0.75 → high route (unless crisis)
+

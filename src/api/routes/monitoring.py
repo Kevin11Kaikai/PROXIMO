@@ -51,5 +51,13 @@ async def status() -> Dict[str, Any]:
             "redis_url": settings.REDIS_URL,
             "qdrant_url": settings.QDRANT_URL,
             "model_path": settings.MODEL_PATH,
+            "model_name": settings.MODEL_NAME,
+        },
+        "features": {
+            "gpt5_codex_preview": {
+                "enabled": getattr(settings, "ENABLE_GPT5_CODEX_PREVIEW", False),
+                "alias": getattr(settings, "GPT5_CODEX_ALIAS", "gpt-5-codex-preview"),
+                "backend_model": getattr(settings, "GPT5_CODEX_BACKEND_MODEL", None) or settings.MODEL_NAME,
+            }
         }
     } 

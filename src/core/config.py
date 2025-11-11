@@ -42,40 +42,46 @@ class Settings(BaseSettings):
     # Application settings
     APP_NAME: str = "AI Personality Drift Simulation"
     VERSION: str = "0.1.0"
-    DEBUG: bool = Field(default=False, env="DEBUG")
-    HOST: str = Field(default="0.0.0.0", env="HOST")
-    PORT: int = Field(default=8000, env="PORT")
+    # pydantic-settings automatically reads from environment variables using field name
+    DEBUG: bool = Field(default=False)
+    HOST: str = Field(default="0.0.0.0")
+    PORT: int = Field(default=8000)
     
     # Logging
-    LOG_LEVEL: str = Field(default="INFO", env="LOG_LEVEL")
-    LOG_FORMAT: str = Field(default="json", env="LOG_FORMAT")
+    LOG_LEVEL: str = Field(default="INFO")
+    LOG_FORMAT: str = Field(default="json")
     
     # Database settings
-    REDIS_URL: str = Field(default="redis://localhost:6379", env="REDIS_URL")
-    QDRANT_URL: str = Field(default="http://localhost:6333", env="QDRANT_URL")
+    REDIS_URL: str = Field(default="redis://localhost:6379")
+    QDRANT_URL: str = Field(default="http://localhost:6333")
     
     # Model settings
-    MODEL_PATH: str = Field(default="./models", env="MODEL_PATH")
-    MODEL_NAME: str = Field(default="llama-3.1-8b-instruct", env="MODEL_NAME")
-    OLLAMA_URL: str = Field(default="http://localhost:11434", env="OLLAMA_URL")
+    MODEL_PATH: str = Field(default="./models")
+    MODEL_NAME: str = Field(default="llama-3.1-8b-instruct")
+    OLLAMA_URL: str = Field(default="http://localhost:11434")
+
+    # Feature flags / Aliases
+    ENABLE_GPT5_CODEX_PREVIEW: bool = Field(default=False, description="Advertise and route GPT-5-Codex preview alias for all clients")
+    GPT5_CODEX_ALIAS: str = Field(default="gpt-5-codex-preview", description="Public alias exposed to clients")
+    GPT5_CODEX_BACKEND_MODEL: Optional[str] = Field(default=None, description="Backend Ollama model name to use when alias is enabled; falls back to MODEL_NAME if not set")
     
     # Simulation settings
-    SIMULATION_DURATION_DAYS: int = Field(default=30, env="SIMULATION_DURATION_DAYS")
-    TIME_COMPRESSION_FACTOR: int = Field(default=24, env="TIME_COMPRESSION_FACTOR")
+    SIMULATION_DURATION_DAYS: int = Field(default=30)
+    TIME_COMPRESSION_FACTOR: int = Field(default=24)
     
     # Data storage
-    DATA_DIR: str = Field(default="./data", env="DATA_DIR")
-    RESULTS_DIR: str = Field(default="./data/results", env="RESULTS_DIR")
+    DATA_DIR: str = Field(default="./data")
+    RESULTS_DIR: str = Field(default="./data/results")
     
     # Configuration paths
-    CONFIG_DIR: str = Field(default="./config", env="CONFIG_DIR")
-    PERSONAS_CONFIG_DIR: str = Field(default="./config/personas", env="PERSONAS_CONFIG_DIR")
-    EVENTS_CONFIG_DIR: str = Field(default="./config/events", env="EVENTS_CONFIG_DIR")
-    SIMULATION_CONFIG_DIR: str = Field(default="./config/simulation", env="SIMULATION_CONFIG_DIR")
+    CONFIG_DIR: str = Field(default="./config")
+    PERSONAS_CONFIG_DIR: str = Field(default="./config/personas")
+    EVENTS_CONFIG_DIR: str = Field(default="./config/events")
+    SIMULATION_CONFIG_DIR: str = Field(default="./config/simulation")
     
     # API settings
     API_PREFIX: str = "/api/v1"
-    CORS_ORIGINS: list[str] = Field(default=["*"], env="CORS_ORIGINS")
+    CORS_ORIGINS: list[str] = Field(default=["*"])
 
 
 class ConfigManager:

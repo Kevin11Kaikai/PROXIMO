@@ -1,0 +1,9 @@
+# 最小测试配置
+models:
+  - type: main
+    engine: openai
+    model: gpt-3.5-turbo
+
+instructions:
+  - type: general
+    content: "You are a helpful assistant."
