@@ -338,4 +338,4 @@ data/results/*
 
 # Logs
 *.log
-logs/
+logs/PsyGUARD-RoBERTa/
